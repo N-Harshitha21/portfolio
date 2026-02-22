@@ -1,0 +1,748 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap');
+
+:root {
+    --bg-color: #050505;
+    /* Deep black/dark grey */
+    --text-color: #ffffff;
+    --primary-color: #64ffda;
+    --gradient-text: linear-gradient(90deg, #ffffff 0%, #a0a0a0 100%);
+    /* Default subtle gradient */
+    --font-main: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Enable top nav */
+.top-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 2rem 5%;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.top-nav a {
+    text-transform: capitalize;
+    /* "About Me", "Skills", etc */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0.9;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.top-nav a:hover {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Old Navbar styles removed */
+
+/* Hero Section - Desk Theme */
+/* Hero Section - Desk Theme */
+/* Hero Section - Desk Theme */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+    position: relative;
+    /* Background Image Setup */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./backgroungMS.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Fallback gradient if image is missing */
+    background-color: #050505;
+}
+
+/* .hero-section::before removed as per request to have only one background image */
+
+.hero-container-split {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    width: 100%;
+    max-width: 1400px;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* Left Column: Text */
+.hero-text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+
+.hero-name {
+    font-family: var(--font-main);
+    /* Cleaner font than Oswald for this style usually, or keep Oswald if user loves bold */
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #fff;
+    /* White base */
+}
+
+/* Gradient effect for name separately */
+/* Gradient effect for name separately */
+.hero-name {
+    background: linear-gradient(to right, #64ffda, #007bff);
+    /* Strong Blue-Green Gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Standard fallbacks sometimes need this explicit */
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    /* Helps with gradient clipping */
+}
+
+.hero-role {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    background: linear-gradient(to right, #c471ed, #12c2e9);
+    /* Purple-to-Blue Gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-description-block {
+    max-width: 600px;
+}
+
+.hero-description-block p {
+    font-size: 1.3rem;
+    /* Increased size for better readability */
+    color: #ccc;
+    /* Slightly lighter gray for contrast against dark bg */
+}
+
+.hero-footer-info {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    color: #fff;
+    /* Make it brighter/white as requested implicitly by "increased" usually implying visibility */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Right Column: Image */
+.hero-image-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background removed, now handled by .hero-section::before for full bleed */
+}
+
+/* Wrapper for image and animation */
+.image-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    /* Explicit size for the wrapper to hold the absolute ring */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Circling Light Animation */
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #64ffda;
+    /* Light Cyan */
+    border-right-color: #007bff;
+    /* Blue */
+    /* Create the "light thing" effect */
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+    animation: spin-light 4s linear infinite;
+    z-index: 1;
+}
+
+.image-wrapper::after {
+    /* Optional: A second opposing light for balance */
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: #c471ed;
+    /* Purple bubble */
+    animation: spin-light-reverse 7s linear infinite;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+@keyframes spin-light {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-light-reverse {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* The Geometric Circle (Simpler now) */
+.geometric-circle {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Subtle backing */
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.profile-image {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    border: 4px solid rgba(0, 0, 0, 0.5);
+    /* Dark border to separate from ring */
+}
+
+/* About Me Gradient */
+/* .about-text p:first-of-type removed to keep uniform white color */
+
+/* Responsive Redesign */
+@media screen and (max-width: 1024px) {
+    .hero-container-split {
+        /* Keep side-by-side but reduce gap */
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding-top: 80px;
+    }
+
+    .hero-text-content {
+        align-items: flex-start;
+        /* Keep left aligned */
+    }
+
+    .hero-name {
+        font-size: 5rem;
+        /* Scale down slightly for tablet/laptop but keep large */
+    }
+
+    .hero-footer-info {
+        justify-content: center;
+    }
+
+    .geometric-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .profile-image {
+        width: 300px;
+        height: 300px;
+    }
+
+    .section {
+        padding: 40px 5%;
+        margin: 20px auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hero-name {
+        font-size: 13vw;
+    }
+
+    .hero-role {
+        font-size: 1.4rem;
+    }
+
+    .geometric-circle {
+        width: 180px;
+        /* Smaller image to allow text space side-by-side */
+        height: 180px;
+    }
+
+    .profile-image {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* Sections General */
+/* Sections General - Card Style Updates */
+.section {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 30px auto;
+
+    /* Card Style Borders */
+    border: 2px solid rgba(100, 255, 218, 0.2);
+    /* Low alpha primary color */
+    border-radius: 20px;
+    /* Rounded corners */
+    background: rgba(17, 34, 64, 0.4);
+    /* Slight background tint */
+    backdrop-filter: blur(5px);
+
+    /* Smooth transition for resize */
+    transition: all 0.3s ease;
+}
+
+.section:hover {
+    border-color: rgba(100, 255, 218, 0.5);
+    /* Brighter border on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.section-title::after {
+    display: none;
+    /* Removing the horizontal line as requested to use full borders instead */
+}
+
+span.number {
+    color: var(--primary-color);
+    font-family: monospace;
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+/* About Section */
+.about-content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+/* Tech Keyword Animation */
+.tech-keyword {
+    font-weight: 700;
+    color: #64ffda;
+    /* Light Cyan/Primary Color - Ensuring it's bright */
+    display: inline-block;
+    opacity: 1;
+    /* Make visible by default - CRITICAL FIX for "blanks" */
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Confirmed .popped is there. I will add a slight hover effect to the keywords for extra interactivity as a bonus. */
+.tech-keyword.popped {
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.tech-keyword:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #64ffda;
+    cursor: default;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+
+    50% {
+        transform: scale(1.5) translateY(-10px);
+        /* Pop UP and get big */
+        color: #fff;
+        /* Flash white */
+        text-shadow: 0 0 15px #64ffda;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        /* Sit back down */
+        color: #64ffda;
+    }
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+}
+
+.skill-category h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tags span {
+    background: var(--accent-color);
+    color: var(--text-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-family: monospace;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-content h3 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-category {
+    color: var(--primary-color);
+    font-family: monospace;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.project-desc {
+    color: #8892b0;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.tech-stack span {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #ccd6f6;
+}
+
+.small-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.small-btn:hover {
+    background: rgba(100, 255, 218, 0.1);
+}
+
+/* Education Section */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: #233554;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    /* Adjust for mobile/desktop */
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    top: 15px;
+    left: 13px;
+    z-index: 1;
+}
+
+.timeline-content {
+    padding: 20px;
+    background: var(--secondary-color);
+    border-radius: 6px;
+}
+
+.timeline-content h3 {
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.institution {
+    display: block;
+    color: #8892b0;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.year {
+    display: block;
+    color: var(--primary-color);
+    font-family: monospace;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.score {
+    color: #ccd6f6;
+}
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.contact-section .section-title {
+    justify-content: center;
+}
+
+.contact-section .section-title::after {
+    display: none;
+}
+
+.contact-content p {
+    color: #8892b0;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-email {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-icon {
+    font-size: 2rem;
+    color: #8892b0;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+}
+
+.location {
+    color: #ccd6f6;
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #8892b0;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content>* {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+    /* JS will handle triggering animations if needed, but for now pure CSS basic load animation */
+}
+
+.hero-content .greeting {
+    animation-delay: 0.1s;
+}
+
+.hero-content .name {
+    animation-delay: 0.2s;
+}
+
+.hero-content .title {
+    animation-delay: 0.3s;
+}
+
+.hero-content .summary {
+    animation-delay: 0.4s;
+}
+
+.hero-content .cta-buttons {
+    animation-delay: 0.5s;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 1.5rem 2rem;
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 1001;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 70%;
+        background: var(--secondary-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-section {
+        padding: 0 5%;
+    }
+
+    .name {
+        font-size: 3.5rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .section-title::after {
+        width: 100px;
+    }
+
+    .timeline::after {
+        left: 20px;
+    }
+}
