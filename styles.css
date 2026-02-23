@@ -58,6 +58,23 @@ body {
     opacity: 1;
 }
 
+.top-nav a.download-btn {
+    background-color: #2bc5b4;
+    color: #050505;
+    padding: 0.5rem 1.2rem;
+    border-radius: 12px;
+    opacity: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.top-nav a.download-btn:hover {
+    background-color: #23a496;
+    color: #050505;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -154,16 +171,75 @@ a {
     /* Slightly lighter gray for contrast against dark bg */
 }
 
-.hero-footer-info {
-    margin-top: 4rem;
+/* Hero Contact Details */
+.hero-contact-details {
+    margin-top: 2rem;
     display: flex;
-    gap: 3rem;
-    font-family: var(--font-main);
+    flex-direction: column;
+    gap: 1.2rem;
     font-size: 1.1rem;
+    color: #a0a0a0;
+}
+
+.detail-row {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-color {
+    color: #2bc5b4;
+    /* Teal icon color */
+    font-size: 1.2rem;
+}
+
+/* Hero Action Buttons */
+.hero-action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    /* Slightly rounded */
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.primary-btn {
+    background-color: #2bc5b4;
+    color: #050505;
+    border: 2px solid #2bc5b4;
+}
+
+.primary-btn:hover {
+    background-color: transparent;
+    color: #2bc5b4;
+}
+
+.outline-btn {
+    background-color: transparent;
     color: #fff;
-    /* Make it brighter/white as requested implicitly by "increased" usually implying visibility */
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.outline-btn:hover {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Right Column: Image */
@@ -333,7 +409,8 @@ a {
 /* Sections General - Card Style Updates */
 .section {
     padding: 60px 5%;
-    max-width: 1200px;
+    max-width: 1400px;
+    /* Increased width for all sections */
     margin: 30px auto;
 
     /* Card Style Borders */
@@ -426,40 +503,66 @@ span.number {
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    /* Map to 3 columns on large screens like the original image */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .skill-category {
-    background: var(--secondary-color);
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: #0f1624;
+    /* Darker navy background for card like the image */
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
     transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Subtle border */
 }
 
 .skill-category:hover {
     transform: translateY(-5px);
+    border-color: rgba(43, 197, 180, 0.3);
 }
 
 .skill-category h3 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
 }
 
 .skill-tags span {
-    background: var(--accent-color);
-    color: var(--text-color);
-    padding: 5px 12px;
+    background: rgba(43, 197, 180, 0.08);
+    /* Teal tint */
+    color: #2bc5b4;
+    /* Teal text */
+    border: 1px solid rgba(43, 197, 180, 0.2);
+    padding: 8px 16px;
     border-radius: 20px;
-    font-size: 0.9rem;
-    font-family: monospace;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: var(--font-main);
+    transition: all 0.3s ease;
+}
+
+.skill-tags span:hover {
+    background: rgba(43, 197, 180, 0.15);
+    border-color: rgba(43, 197, 180, 0.4);
+    transform: translateY(-2px);
+    color: #ffffff;
 }
 
 /* Projects Section */
