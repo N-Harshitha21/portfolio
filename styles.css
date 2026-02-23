@@ -45,7 +45,7 @@ body {
 .top-nav a {
     text-transform: capitalize;
     /* "About Me", "Skills", etc */
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #fff;
     opacity: 0.9;
@@ -61,7 +61,7 @@ body {
 .top-nav a.download-btn {
     background-color: #2bc5b4;
     color: #050505;
-    padding: 0.5rem 1.2rem;
+    padding: 0.55rem 1.3rem;
     border-radius: 12px;
     opacity: 1;
     display: inline-flex;
@@ -124,7 +124,9 @@ a {
 .hero-name {
     font-family: var(--font-main);
     /* Cleaner font than Oswald for this style usually, or keep Oswald if user loves bold */
-    font-size: 8rem;
+    font-size: clamp(3rem, 6vw + 1rem, 7.5rem);
+    white-space: nowrap;
+    /* Prevent name from stacking on two lines */
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 1rem;
@@ -147,7 +149,7 @@ a {
 }
 
 .hero-role {
-    font-size: 2.2rem;
+    font-size: clamp(1.4rem, 3vw + 0.5rem, 2rem);
     font-weight: 700;
     margin-bottom: 2rem;
     letter-spacing: 0.5px;
@@ -165,7 +167,7 @@ a {
 }
 
 .hero-description-block p {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     /* Increased size for better readability */
     color: #ccc;
     /* Slightly lighter gray for contrast against dark bg */
@@ -359,11 +361,6 @@ a {
         /* Keep left aligned */
     }
 
-    .hero-name {
-        font-size: 5rem;
-        /* Scale down slightly for tablet/laptop but keep large */
-    }
-
     .hero-footer-info {
         justify-content: center;
     }
@@ -385,14 +382,6 @@ a {
 }
 
 @media screen and (max-width: 600px) {
-    .hero-name {
-        font-size: 13vw;
-    }
-
-    .hero-role {
-        font-size: 1.4rem;
-    }
-
     .geometric-circle {
         width: 180px;
         /* Smaller image to allow text space side-by-side */
